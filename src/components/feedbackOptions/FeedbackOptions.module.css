@@ -3,6 +3,7 @@
 }
 
 .feedbackList__item {
+  text-transform: capitalize;
   width: 100px;
   height: 40px;
   background-color: teal;

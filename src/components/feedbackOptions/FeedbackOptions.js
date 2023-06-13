@@ -6,22 +6,21 @@ const FeedbackOptions = ({ onLeaveFeedback, options }) => {
 
   return (
     <ul className={css.feedbackList}>
-      <button onClick={onLeaveFeedback} className={css['feedbackList__item']}>
-        Good
-      </button>
-      <button onClick={onLeaveFeedback} className={css['feedbackList__item']}>
-        Neutral
-      </button>
-      <button onClick={onLeaveFeedback} className={css['feedbackList__item']}>
-        Bad
-      </button>
+      {options.map((option, index) => (
+        <button
+          key={index}
+          onClick={() => onLeaveFeedback(option)}
+          className={css.feedbackList__item}
+        >
+          {option}
+        </button>
+      ))}
     </ul>
   );
 };
-
 export default FeedbackOptions;
 
 FeedbackOptions.propTypes = {
   onLeaveFeedback: PropTypes.string,
-  options: PropTypes.string,
+  options: PropTypes.array,
 };

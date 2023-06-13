@@ -31,20 +31,12 @@ class App extends Component {
     return positivePercentage;
   }
 
-  onClickBtn = () => {
-    // console.log(e);
+  onClickBtn = option => {
     this.setState(prevState => {
       return {
-        good: prevState.good + 1,
-        neutral: prevState.neutral + 1,
-        bad: prevState.bad + 1,
+        [option]: prevState[option] + 1,
       };
     });
-    // this.setState(prevState => {
-    //   return {
-    //     [option]: prevState[option] + 1,
-    //   };
-    // });
   };
 
   render() {
@@ -54,7 +46,7 @@ class App extends Component {
       <div className={css['app-container']}>
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={(good, neutral, bad)}
+            options={Object.keys(this.state)}
             onLeaveFeedback={this.onClickBtn}
           />
         </Section>
