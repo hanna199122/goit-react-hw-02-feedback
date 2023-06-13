@@ -11,7 +11,7 @@ class App extends Component {
   // };
 
   state = {
-    good: 2,
+    good: 0,
     neutral: 0,
     bad: 0,
   };
@@ -31,8 +31,8 @@ class App extends Component {
     return positivePercentage;
   }
 
-  onClickBtn = evt => {
-    // console.log(evt.target);
+  onClickBtn = () => {
+    // console.log(e);
     this.setState(prevState => {
       return {
         good: prevState.good + 1,
@@ -40,6 +40,11 @@ class App extends Component {
         bad: prevState.bad + 1,
       };
     });
+    // this.setState(prevState => {
+    //   return {
+    //     [option]: prevState[option] + 1,
+    //   };
+    // });
   };
 
   render() {
@@ -49,7 +54,7 @@ class App extends Component {
       <div className={css['app-container']}>
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={this.state}
+            options={(good, neutral, bad)}
             onLeaveFeedback={this.onClickBtn}
           />
         </Section>
@@ -74,9 +79,9 @@ class App extends Component {
 export default App;
 
 FeedbackOptions.propTypes = {
-  good: PropTypes.number.isRequired,
-  neutral: PropTypes.number.isRequired,
-  bad: PropTypes.number.isRequired,
-  total: PropTypes.string,
-  positivePercentage: PropTypes.string,
+  good: PropTypes.number,
+  neutral: PropTypes.number,
+  bad: PropTypes.number,
+  total: PropTypes.number,
+  positivePercentage: PropTypes.number,
 };
